@@ -122,7 +122,6 @@ h1 {
 /* 🍔 HAMBURGER MENU STYLES (Mobile) */
 .hamburger { 
     display: none; 
-    /* Style pour le bouton lui-même */
     background: none;
     border: none;
     cursor: pointer;
@@ -142,42 +141,6 @@ h1 {
 .nav-menu {
     display: flex;
 }
-
-/* Styles quand le menu est ACTIF (via script.js) */
-@media (max-width: 900px) {
-    .nav-menu { 
-        display: none; 
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: var(--color-black);
-        padding: 20px 0;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    }
-    
-    .nav-menu.active {
-        display: flex;
-    }
-    
-    .nav-menu a {
-        margin: 15px 25px;
-        text-align: center;
-        font-size: 1.2rem;
-        padding: 10px 0;
-        border-bottom: 1px solid var(--glass-border);
-    }
-    
-    .hamburger { 
-        display: block; 
-    }
-    
-    .hamburger.is-active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-    .hamburger.is-active span:nth-child(2) { opacity: 0; }
-    .hamburger.is-active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-}
-
 
 /* ===== Buttons (CTA) ===== */
 .btn-primary, .btn-secondary {
@@ -224,7 +187,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* CHEMIN D'IMAGE FINAL ICI */
+    /* CHEMIN D'IMAGE FINAL */
     background: url('./background.jpg') center/cover no-repeat fixed; 
     position: relative;
     padding: 100px 0;
@@ -310,7 +273,7 @@ h1 {
 }
 
 
-/* ===== HUB DE COMMANDE (4) ===== */
+/* ===== HUB DE COMMANDE (4) - CORRECTION DE L'ALIGNEMENT */
 .delivery-section {
     padding: 100px 0;
     background-color: var(--color-black);
@@ -324,9 +287,10 @@ h1 {
 
 .delivery-buttons {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Centre horizontalement les boutons */
     gap: 40px;
     flex-wrap: wrap;
+    margin-top: 30px; 
 }
 
 .delivery-btn {
@@ -338,7 +302,7 @@ h1 {
     border-radius: 3px;
     font-family: var(--font-heading);
     font-weight: 700;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
 }
 
 .delivery-btn:hover {
@@ -480,9 +444,40 @@ h1 {
 
 /* ===== RESPONSIVE (Mobile) ===== */
 @media (max-width: 900px) {
-    /* Cache la version desktop de la navigation */
-    .nav-menu { display: none; }
+    /* Menu Mobile (Hamburger) */
+    .nav-menu { 
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-black);
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
     
+    .nav-menu.active { /* Activation via script.js */
+        display: flex;
+    }
+    
+    .nav-menu a {
+        margin: 15px 25px;
+        text-align: center;
+        font-size: 1.2rem;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--glass-border);
+    }
+    
+    .hamburger { 
+        display: block; 
+    }
+    
+    .hamburger.is-active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.is-active span:nth-child(2) { opacity: 0; }
+    .hamburger.is-active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    
+    /* Sections */
     .hero-section { min-height: 70vh; }
     .hero-section h1 { font-size: 3.5rem; letter-spacing: 3px; }
     .hero-section .slogan { font-size: 1.2rem; }
@@ -496,7 +491,16 @@ h1 {
     .product-details { padding: 40px; }
     .product-image { min-height: 350px; width: 100%; }
 
-    .delivery-buttons { flex-direction: column; }
+    /* Correction des boutons de livraison sur mobile */
+    .delivery-buttons { 
+        flex-direction: column; 
+        align-items: center; /* Centre les boutons empilés */
+        gap: 20px;
+    }
+    .delivery-btn {
+        width: 80%; /* Donne de la largeur mais laisse un peu de marge */
+        max-width: 400px;
+    }
     
     .review-stats, .contact-grid { flex-direction: column; gap: 30px; }
     .testimonial-quote { padding: 30px; }
