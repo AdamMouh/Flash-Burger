@@ -52,13 +52,13 @@ h1 {
     font-size: 6rem;
     font-weight: 900;
     letter-spacing: 5px;
-    text-shadow: 0 0 15px rgba(255, 199, 44, 0.3); /* Effet néon subtil */
+    text-shadow: 0 0 15px rgba(255, 199, 44, 0.3);
 }
 
 .section-heading {
     font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 80px; /* Grande marge pour l'effet épuré */
+    margin-bottom: 80px;
     color: var(--color-vivid-yellow);
 }
 .section-heading.white {
@@ -67,24 +67,34 @@ h1 {
 
 .slogan, .pre-title { color: var(--color-text-light); }
 
-/* Glassmorphism Effect */
+/* Glassmorphism Effect - Assure que la transparence est appliquée */
 .glass-morphism {
     background: var(--glass-background);
     backdrop-filter: blur(8px);
     border: 1px solid var(--glass-border);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    /* Assure que la transparence est prioritaire sur d'autres backgrounds */
-    background-color: transparent !important;
+    /* Règle critique pour éviter que d'autres backgrounds n'écrasent la transparence */
+    background-color: transparent !important; 
 }
 
-/* Animations (Gardées pour le style "Flash") */
-.fade-in { opacity: 0; transform: translateY(20px); animation: fadeIn 0.8s ease forwards; }
-.delay-1 { animation-delay: 0.2s; }
-.delay-2 { animation-delay: 0.4s; }
-.delay-3 { animation-delay: 0.6s; }
-@keyframes fadeIn {
-    to { opacity: 1; transform: translateY(0); }
+/* Animations (pour la classe 'fade-in' qui sera gérée par le JS) */
+.fade-in { 
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: opacity 0.8s ease, transform 0.8s ease; 
+}
+
+/* Pour les éléments du Hero qui n'ont pas besoin de l'Intersection Observer */
+.fade-in.delay-1, .fade-in.delay-2, .fade-in.delay-3 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* État 'visible' déclenché par le JS pour les autres sections */
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 
@@ -96,6 +106,13 @@ h1 {
     padding: 20px 0;
     background-color: rgba(8, 8, 8, 0.95);
     box-shadow: 0 1px 15px rgba(255, 199, 44, 0.1);
+    transition: background-color 0.3s;
+}
+
+/* Style de l'en-tête lorsque l'utilisateur scroll */
+.main-header.scrolled {
+    background-color: var(--color-black);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
 }
 
 .header-content {
@@ -144,7 +161,7 @@ h1 {
     display: flex;
 }
 
-/* ===== Buttons (CTA) ===== */
+/* ===== Buttons (CTA) - Styles de base */
 .btn-primary, .btn-secondary {
     display: inline-block;
     padding: 16px 40px;
@@ -156,13 +173,13 @@ h1 {
     margin: 10px;
 }
 
-.btn-primary, .call-link {
+.btn-primary, .call-link, .product-cta {
     background-color: var(--color-vivid-yellow);
     color: var(--color-black);
     box-shadow: 0 8px 15px rgba(255, 199, 44, 0.3);
 }
 
-.btn-primary:hover, .call-link:hover {
+.btn-primary:hover, .call-link:hover, .product-cta:hover {
     background-color: var(--color-white);
     box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4);
 }
@@ -189,7 +206,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* CHEMIN D'IMAGE CORRIGÉ (ajusté pour la racine si l'environnement le nécessite) */
+    /* CHEMIN D'IMAGE : Utilisez un chemin absolu pour plus de fiabilité */
     background: url('/src/background.jpg') center/cover no-repeat fixed; 
     position: relative;
     padding: 100px 0;
@@ -209,7 +226,7 @@ h1 {
 .slogan { font-size: 1.4rem; color: var(--color-text-light); }
 
 
-/* ===== Produits Phares (3) - Mise en page épurée (Style Crafto) ===== */
+/* ===== Produits Phares (3) - Correction alignement et images ===== */
 .product-showcase {
     padding: 120px 0;
     background-color: var(--color-dark-gray);
@@ -260,11 +277,10 @@ h1 {
     background-size: cover;
     background-position: center;
     transition: transform 0.5s;
-    /* ASSUREZ-VOUS QUE L'IMAGE REMPLIT BIEN L'ESPACE, AJOUT DU BACKGROUND PAR DÉFAUT */
-    background-color: var(--color-dark-gray); 
+    background-color: var(--color-dark-gray); /* Background de secours si l'image ne charge pas */
 }
 
-/* CHEMINS D'IMAGES CORRIGÉS (utilisation de /src/ pour une compatibilité maximale) */
+/* CHEMINS D'IMAGES DES PRODUITS (absolus) */
 .body-burger-bg { 
     background-image: url('/src/body.jpg'); 
 } 
@@ -277,7 +293,7 @@ h1 {
 }
 
 
-/* ===== HUB DE COMMANDE (4) - CORRECTION DU GLASSMORHPISM */
+/* ===== HUB DE COMMANDE (4) - Correction Glassmorphism des boutons ===== */
 .delivery-section {
     padding: 100px 0;
     background-color: var(--color-black);
@@ -291,7 +307,7 @@ h1 {
 
 .delivery-buttons {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     gap: 40px;
     flex-wrap: wrap;
     margin-top: 30px; 
@@ -308,10 +324,9 @@ h1 {
     font-weight: 700;
     transition: all 0.3s ease;
     
-    /* Le style par défaut pour le bouton de livraison écrase le background-color du glass-morphism. */
-    /* Nous devons appliquer un background transparent pour laisser passer l'effet. */
+    /* Assure que le background spécifique ne masque pas l'effet glass */
     background: transparent; 
-    border: 1px solid var(--color-vivid-yellow); /* Ajout d'une bordure visible en état normal */
+    border: 2px solid var(--color-vivid-yellow);
 }
 
 .delivery-btn:hover {
@@ -327,7 +342,49 @@ h1 {
     background-color: var(--color-dark-gray);
     text-align: center;
 }
-/* ... (Reste de la section avis) ... */
+
+.review-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.stat-card {
+    flex: 0 0 250px;
+    padding: 30px;
+}
+
+.stat-rating {
+    font-size: 2rem;
+    color: var(--color-vivid-yellow);
+    margin-bottom: 5px;
+}
+
+.stat-source {
+    font-weight: 600;
+    color: var(--color-text-light);
+}
+
+.testimonial-quote {
+    background-color: var(--color-vivid-yellow);
+    color: var(--color-black);
+    padding: 40px 60px;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 3px;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    font-style: italic;
+    box-shadow: 0 8px 20px rgba(255, 199, 44, 0.5);
+}
+
+.testimonial-quote cite {
+    display: block;
+    margin-top: 20px;
+    font-style: normal;
+    font-weight: 700;
+}
 
 
 /* ===== CONTACT & LOCALISATION (6) ===== */
@@ -335,7 +392,39 @@ h1 {
     padding: 100px 0;
     background-color: var(--color-black);
 }
-/* ... (Reste de la section contact) ... */
+
+.contact-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.contact-card {
+    flex: 0 0 450px;
+    padding: 50px;
+    text-align: center;
+}
+
+.card-icon {
+    font-size: 3rem;
+    color: var(--color-vivid-yellow);
+    display: block;
+    margin-bottom: 15px;
+}
+
+.contact-detail {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-white);
+    margin-bottom: 10px;
+}
+
+.contact-schedule {
+    font-style: italic;
+    margin-bottom: 25px;
+    color: var(--color-text-light);
+}
 
 
 /* ===== FOOTER (7) ===== */
@@ -345,6 +434,27 @@ h1 {
     border-top: 1px solid rgba(255, 199, 44, 0.2);
 }
 
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-links a {
+    background-color: var(--color-vivid-yellow);
+    color: var(--color-black);
+    padding: 8px 12px;
+    border-radius: 3px;
+    margin-left: 10px;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--color-white);
+}
+
+/* STYLE TIKTOK */
 .social-links a.tiktok {
     background-color: #000000; 
     color: var(--color-vivid-yellow);
@@ -358,15 +468,53 @@ h1 {
 
 /* ===== RESPONSIVE (Mobile) ===== */
 @media (max-width: 900px) {
-    /* ... (Styles Mobiles) ... */
+    /* Menu Mobile (Hamburger) */
+    .nav-menu { 
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-black);
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
     
+    .nav-menu.active { 
+        display: flex;
+    }
+    
+    .nav-menu a {
+        margin: 15px 25px;
+        text-align: center;
+        font-size: 1.2rem;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--glass-border);
+    }
+    
+    .hamburger { 
+        display: block; 
+    }
+    
+    .hamburger.is-active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.is-active span:nth-child(2) { opacity: 0; }
+    .hamburger.is-active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    
+    /* Sections */
+    .hero-section { min-height: 70vh; }
+    .hero-section h1 { font-size: 3.5rem; letter-spacing: 3px; }
+    .hero-section .slogan { font-size: 1.2rem; }
+    .cta-cluster { flex-direction: column; gap: 15px; }
+
+    .section-heading { font-size: 2.5rem; margin-bottom: 50px; }
+
     .product-item, .product-item.reverse-layout {
         flex-direction: column;
     }
     .product-details { 
         padding: 40px; 
-        /* Correction de l'alignement du texte si l'image est manquante */
-        text-align: center; 
+        text-align: center; /* Correction d'alignement pour mobile */
     }
     .product-image { min-height: 350px; width: 100%; }
 
@@ -381,5 +529,8 @@ h1 {
         max-width: 400px;
     }
     
-    /* ... (Reste des styles mobiles) ... */
+    .review-stats, .contact-grid { flex-direction: column; gap: 30px; }
+    .testimonial-quote { padding: 30px; }
+    
+    .footer-content { flex-direction: column; gap: 20px; }
 }
