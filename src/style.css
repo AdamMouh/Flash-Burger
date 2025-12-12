@@ -1,14 +1,15 @@
-/* Variables de Design (Mises à jour pour l'esthétique Crafto/Premium) */
+/* Variables de Design (Crafto + Flash Branding) */
 :root {
-    --color-black: #080808; /* Noir très profond */
+    --color-black: #080808; 
     --color-dark-gray: #1a1a1a;
-    --color-vivid-yellow: #FFC72C; /* Jaune Vif / Or */
+    --color-vivid-yellow: #FFC72C; /* Le jaune comme couleur d'accent principal */
     --color-white: #ffffff;
-    --color-text-light: #cccccc; /* Gris clair pour le corps de texte */
-    --glass-background: rgba(255, 255, 255, 0.05); /* Plus subtil */
+    --color-text-light: #cccccc; 
+    
+    /* Glassmorphism subtil pour l'esthétique Crafto/moderne */
+    --glass-background: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 199, 44, 0.3);
     
-    /* Changement de police pour une ambiance plus élégante */
     --font-heading: 'Roboto', sans-serif;
     --font-body: 'Poppins', sans-serif;
 }
@@ -18,6 +19,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -34,36 +36,38 @@ body {
     padding: 0 25px;
 }
 
-.text-center {
-    text-align: center;
-}
+a { text-decoration: none; color: var(--color-vivid-yellow); }
+
+.text-center { text-align: center; }
 
 /* Typography */
 h1, h2, h3 {
     font-family: var(--font-heading);
-    color: var(--color-white); /* Les titres deviennent blancs, le jaune devient l'accent */
     line-height: 1.1;
     text-transform: uppercase;
+    color: var(--color-white);
 }
 
 h1 {
-    font-size: 5rem;
+    font-size: 6rem;
     font-weight: 900;
-    letter-spacing: 5px; /* Plus d'espace pour l'élégance */
+    letter-spacing: 5px;
+    text-shadow: 0 0 15px rgba(255, 199, 44, 0.3); /* Effet néon subtil */
 }
 
-h2 {
+.section-heading {
     font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 60px; /* Plus d'espace */
-    color: var(--color-vivid-yellow); /* Titre de section en jaune pour l'accent */
+    margin-bottom: 80px; /* Grande marge pour l'effet épuré */
+    color: var(--color-vivid-yellow);
+}
+.section-heading.white {
+    color: var(--color-white);
 }
 
-p {
-    color: var(--color-text-light);
-}
+.slogan, .pre-title { color: var(--color-text-light); }
 
-/* Glassmorphism Effect (Maintenu mais plus transparent) */
+/* Glassmorphism Effect */
 .glass-morphism {
     background: var(--glass-background);
     backdrop-filter: blur(8px);
@@ -73,7 +77,7 @@ p {
 }
 
 /* Animations (Gardées pour le style "Flash") */
-.fade-in { opacity: 0; animation: fadeIn 0.8s ease forwards; }
+.fade-in { opacity: 0; transform: translateY(20px); animation: fadeIn 0.8s ease forwards; }
 .delay-1 { animation-delay: 0.2s; }
 .delay-2 { animation-delay: 0.4s; }
 .delay-3 { animation-delay: 0.6s; }
@@ -81,51 +85,66 @@ p {
     to { opacity: 1; transform: translateY(0); }
 }
 
+
 /* ===== Header/Navigation ===== */
-.header-nav {
+.main-header {
     position: sticky;
     top: 0;
     z-index: 100;
-    padding: 20px 0; /* Un peu plus grand */
-    background-color: rgba(0, 0, 0, 0.9); /* Transparence subtile */
+    padding: 20px 0;
+    background-color: rgba(8, 8, 8, 0.95);
     box-shadow: 0 1px 15px rgba(255, 199, 44, 0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
     font-size: 1.8rem;
     color: var(--color-vivid-yellow);
+    font-weight: 900;
 }
 
-.nav-links a {
+.nav-menu a {
     color: var(--color-text-light);
     margin-left: 35px;
+    transition: color 0.3s;
 }
 
-.nav-links a:hover {
+.nav-menu a:hover, .cta-link {
     color: var(--color-vivid-yellow);
+    font-weight: 600;
 }
 
-/* ===== Buttons (CTA) - Style plus minimaliste et net ===== */
-.btn-primary, .delivery-btn, .btn-product-cta, .btn-secondary {
+/* Hamburger (Style minimaliste) */
+.hamburger { /* ... code pour le hamburger... */ display: none; }
+/* (Le CSS pour le hamburger et le menu mobile est laissé au développeur pour implémenter dans le script.js) */
+
+
+/* ===== Buttons (CTA) ===== */
+.btn-primary, .btn-secondary {
     display: inline-block;
-    padding: 16px 35px;
-    border-radius: 3px; /* Coins plus angulaires */
+    padding: 16px 40px;
+    border-radius: 3px; 
     font-weight: 700;
     text-transform: uppercase;
     transition: all 0.3s ease;
     font-family: var(--font-heading);
+    margin: 10px;
 }
 
-.btn-primary, .btn-product-cta, .call-link {
+.btn-primary, .call-link {
     background-color: var(--color-vivid-yellow);
     color: var(--color-black);
-    border: none;
     box-shadow: 0 8px 15px rgba(255, 199, 44, 0.3);
 }
 
-.btn-primary:hover, .btn-product-cta:hover, .call-link:hover {
+.btn-primary:hover, .call-link:hover {
     background-color: var(--color-white);
-    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4);
 }
 
 .btn-secondary, .map-link {
@@ -140,208 +159,275 @@ p {
 }
 
 .cta-cluster {
-    margin-top: 50px;
+    margin-top: 60px;
 }
 
-/* ===== Hero Section (A) ===== */
-.hero {
-    min-height: 90vh; /* Plus grand */
-    background: url('VOTRE_IMAGE_DE_FOND_NOIR_ELEGANT.jpg') center/cover no-repeat fixed; /* Image de fond fixe pour un effet premium */
+
+/* ===== Hero Section (2) ===== */
+.hero-section {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('VOTRE_IMAGE_DE_FOND_NOIR_ELEGANT.jpg') center/cover no-repeat fixed; 
     position: relative;
+    padding: 100px 0;
 }
 
-.hero::after {
-    background: rgba(0, 0, 0, 0.65); /* Assombrissement plus fort pour le contraste */
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 5;
 }
 
-.hero h1 {
-    font-size: 6rem;
-    letter-spacing: 10px;
-}
-.hero p {
-    font-size: 1.4rem;
-    color: var(--color-white);
-    margin-top: 15px;
-}
+.hero-section > .container { z-index: 10; }
 
-.halal-tag {
-    font-size: 1.2rem;
-    padding: 10px 20px;
-    border: 2px solid var(--color-vivid-yellow);
-    background-color: rgba(255, 199, 44, 0.1);
-}
+.pre-title { font-size: 1.1rem; letter-spacing: 5px; margin-bottom: 10px; color: var(--color-vivid-yellow); }
+.slogan { font-size: 1.4rem; color: var(--color-text-light); }
 
-/* ===== Menu Showcase (B) - Style Crafto : Minimaliste, axe sur l'image ===== */
-.menu-showcase {
+
+/* ===== Produits Phares (3) - Mise en page épurée (Style Crafto) ===== */
+.product-showcase {
     padding: 120px 0;
     background-color: var(--color-dark-gray);
 }
 
-.product-card {
+.product-item {
     display: flex;
     align-items: center;
     background-color: var(--color-black);
-    margin: 80px 0; /* Plus d'espace vertical */
-    border-radius: 5px; /* Coins nets */
+    margin: 80px 0;
+    border-radius: 5px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-    border: 1px solid var(--glass-border);
+    overflow: hidden;
 }
 
-.product-card.reverse {
+.product-item.reverse-layout {
     flex-direction: row-reverse;
 }
 
-.product-info {
+.product-details {
     padding: 60px;
     flex: 1;
 }
 
-.product-info h3 {
+.product-tag {
+    color: var(--color-vivid-yellow);
+    font-weight: 600;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.product-details h3 {
     font-size: 2.8rem;
     margin-bottom: 20px;
-    color: var(--color-vivid-yellow); /* Nom du produit en couleur */
 }
 
-.product-info p {
+.price-info {
     font-size: 1.1rem;
-    margin-bottom: 25px;
-}
-
-.price-tag {
-    font-size: 1.3rem;
     font-weight: 700;
     color: var(--color-white) !important;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
-.product-visual {
+.product-image {
     flex: 1;
     min-height: 500px;
     background-size: cover;
     background-position: center;
     transition: transform 0.5s;
-    border-radius: 5px;
+    /* Placeholder images (à remplacer) */
 }
 
-/* Remplacer ici les placeholders */
-.body-burger { background-image: url('placeholder_body_burger_hd.jpg'); } 
-.smash-burger { background-image: url('placeholder_smash_burger_hd.jpg'); }
+.body-burger-bg { background-image: url('placeholder_body_burger_hd.jpg'); } 
+.smash-burger-bg { background-image: url('placeholder_smash_burger_hd.jpg'); }
 
-.product-card:hover .product-visual {
-    transform: scale(1.02);
+.product-item:hover .product-image {
+    transform: scale(1.03);
 }
 
-/* ===== Delivery Hub (C) - Toujours en jaune éclatant pour la conversion ===== */
-.delivery-hub {
+
+/* ===== HUB DE COMMANDE (4) ===== */
+.delivery-section {
     padding: 100px 0;
     background-color: var(--color-black);
     border-top: 3px solid var(--color-vivid-yellow);
 }
 
-.delivery-hub p {
+.delivery-slogan {
     font-size: 1.4rem;
-    margin-bottom: 50px;
-    color: var(--color-white);
+    margin-bottom: 60px;
 }
 
 .delivery-buttons {
+    display: flex;
+    justify-content: center;
     gap: 40px;
+    flex-wrap: wrap;
 }
 
 .delivery-btn {
     flex: 0 0 280px;
-    border-radius: 3px;
+    padding: 20px 20px;
     font-size: 1.2rem;
-    background-color: var(--color-dark-gray);
     color: var(--color-vivid-yellow);
-    border: 2px solid var(--color-vivid-yellow);
+    text-align: center;
+    border-radius: 3px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    transition: background-color 0.3s;
 }
 
 .delivery-btn:hover {
     background-color: var(--color-vivid-yellow);
     color: var(--color-black);
+    border-color: var(--color-vivid-yellow);
 }
 
-/* ===== Reviews Section (D) - Plus d'espace et netteté ===== */
+
+/* ===== AVIS CLIENTS (5) ===== */
 .reviews-section {
-    padding: 100px 0;
+    padding: 120px 0;
     background-color: var(--color-dark-gray);
+    text-align: center;
 }
 
-.review-grid {
-    gap: 40px;
+.review-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
 }
 
-.review-card {
-    flex: 0 0 320px;
-    padding: 40px;
+.stat-card {
+    flex: 0 0 250px;
+    padding: 30px;
 }
 
-.review-card.glass-morphism {
-    border-color: rgba(255, 199, 44, 0.5); /* Bordure en jaune pour accentuer */
+.stat-rating {
+    font-size: 2rem;
+    color: var(--color-vivid-yellow);
+    margin-bottom: 5px;
 }
 
-.review-quote {
+.stat-source {
+    font-weight: 600;
+    color: var(--color-text-light);
+}
+
+.testimonial-quote {
     background-color: var(--color-vivid-yellow);
     color: var(--color-black);
-    padding: 40px;
+    padding: 40px 60px;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 3px;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    font-style: italic;
+    box-shadow: 0 8px 20px rgba(255, 199, 44, 0.5);
 }
 
-/* ===== Contact Section (E) ===== */
+.testimonial-quote cite {
+    display: block;
+    margin-top: 20px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+
+/* ===== CONTACT & LOCALISATION (6) ===== */
 .contact-section {
     padding: 100px 0;
     background-color: var(--color-black);
 }
 
-.contact-details {
+.contact-grid {
+    display: flex;
+    justify-content: center;
     gap: 40px;
+    flex-wrap: wrap;
 }
 
 .contact-card {
-    flex: 0 0 500px;
+    flex: 0 0 450px;
     padding: 50px;
+    text-align: center;
 }
 
-.contact-card h3 {
+.card-icon {
+    font-size: 3rem;
     color: var(--color-vivid-yellow);
+    display: block;
+    margin-bottom: 15px;
 }
 
-.contact-card p {
+.contact-detail {
     font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-white);
+    margin-bottom: 10px;
 }
 
-.phone-number {
-    font-size: 2rem;
+.contact-schedule {
+    font-style: italic;
+    margin-bottom: 25px;
+    color: var(--color-text-light);
 }
 
-/* ===== Footer ===== */
-.footer {
+
+/* ===== FOOTER (7) ===== */
+.main-footer {
     padding: 40px 0;
     background-color: var(--color-dark-gray);
+    border-top: 1px solid rgba(255, 199, 44, 0.2);
 }
 
-.social-icon {
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-links a {
     background-color: var(--color-vivid-yellow);
     color: var(--color-black);
-    border-radius: 3px; /* Coins plus nets */
+    padding: 8px 12px;
+    border-radius: 3px;
+    margin-left: 10px;
+    font-weight: 700;
+    transition: background-color 0.3s;
 }
 
+.social-links a:hover {
+    background-color: var(--color-white);
+}
 
-/* ===== Responsive (Mobile) ===== */
+/* ===== RESPONSIVE (Mobile) ===== */
 @media (max-width: 900px) {
-    .product-info { padding: 30px; }
-    .product-card { margin: 40px 0; }
+    .nav-menu { display: none; }
+    .hamburger { display: flex; /* Activation du hamburger ici */ }
     
-    .hero h1 { font-size: 3.5rem; letter-spacing: 5px; }
-    .hero p { font-size: 1.1rem; }
+    .hero-section { min-height: 70vh; }
+    .hero-section h1 { font-size: 3.5rem; letter-spacing: 3px; }
+    .hero-section .slogan { font-size: 1.2rem; }
+    .cta-cluster { flex-direction: column; gap: 15px; }
+
+    .section-heading { font-size: 2.5rem; margin-bottom: 50px; }
+
+    .product-item, .product-item.reverse-layout {
+        flex-direction: column;
+    }
+    .product-details { padding: 40px; }
+    .product-image { min-height: 350px; width: 100%; }
+
+    .delivery-buttons { flex-direction: column; }
     
-    .product-visual { min-height: 300px; }
+    .review-stats, .contact-grid { flex-direction: column; gap: 30px; }
+    .testimonial-quote { padding: 30px; }
+    
+    .footer-content { flex-direction: column; gap: 20px; }
 }
-
-@media (max-width: 600px) {
-    .hero h1 { font-size: 2.5rem; letter-spacing: 3px; }
-    .product-info h3 { font-size: 2rem; }
-}
-
-/* Réintégration de tout le CSS de base */
-/* ... (Le reste du CSS de base est inclus ci-dessus) ... */
