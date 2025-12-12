@@ -1,0 +1,487 @@
+/* Variables de Design */
+:root {
+    --color-black: #000000;
+    --color-dark-gray: #1a1a1a;
+    --color-vivid-yellow: #FFC72C;
+    --color-light-yellow: #FFF3C4;
+    --color-white: #ffffff;
+    --glass-background: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --font-heading: 'Roboto', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-black);
+    color: var(--color-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--color-vivid-yellow);
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 5rem;
+    font-weight: 900;
+    letter-spacing: -2px;
+}
+
+h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+/* Glassmorphism Effect Mixin (used on cards and buttons) */
+.glass-morphism {
+    background: var(--glass-background);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Fade-in animations */
+.fade-in { opacity: 0; animation: fadeIn 0.8s ease forwards; }
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+
+@keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Header/Navigation ===== */
+.header-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 15px 0;
+    background-color: var(--color-dark-gray);
+    box-shadow: 0 2px 10px rgba(255, 199, 44, 0.15);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--color-vivid-yellow);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.nav-links a {
+    color: var(--color-white);
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--color-vivid-yellow);
+}
+
+/* Hamburger (Mobile) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--color-vivid-yellow);
+    border-radius: 2px;
+}
+
+/* ===== Buttons (CTA) ===== */
+.btn-primary, .delivery-btn, .btn-product-cta {
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 5px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.2s;
+    font-family: var(--font-heading);
+    box-shadow: 0 4px 15px rgba(255, 199, 44, 0.4);
+}
+
+.btn-primary, .btn-product-cta {
+    background-color: var(--color-vivid-yellow);
+    color: var(--color-black);
+    border: none;
+}
+
+.btn-primary:hover, .btn-product-cta:hover {
+    background-color: var(--color-light-yellow);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 199, 44, 0.6);
+}
+
+.btn-secondary, .map-link {
+    background: transparent;
+    color: var(--color-vivid-yellow);
+    border: 2px solid var(--color-vivid-yellow);
+    padding: 12px 28px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary:hover, .map-link:hover {
+    background-color: var(--color-vivid-yellow);
+    color: var(--color-black);
+}
+
+.cta-cluster {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+/* ===== Hero Section (A) ===== */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('VOTRE_IMAGE_DE_FOND_URBAIN_NOIR.jpg') center/cover no-repeat;
+    position: relative;
+    padding: 100px 0;
+    transform: translateY(20px); /* Initial position for JS scroll effect */
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Overlay sombre pour le texte */
+}
+
+.hero > .container {
+    position: relative;
+    z-index: 10;
+}
+
+.halal-tag {
+    margin-top: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-vivid-yellow);
+    border: 1px dashed var(--color-vivid-yellow);
+    padding: 8px 15px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+/* ===== Menu Showcase (B) ===== */
+.menu-showcase {
+    padding: 80px 0;
+    background-color: var(--color-dark-gray);
+}
+
+.section-title {
+    color: var(--color-vivid-yellow);
+    text-shadow: 0 0 10px rgba(255, 199, 44, 0.4);
+}
+
+.product-card {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-black);
+    margin: 40px 0;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.product-card.reverse {
+    flex-direction: row-reverse;
+}
+
+.product-info {
+    padding: 50px;
+    flex: 1;
+}
+
+.product-info h3 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.product-info p {
+    margin-bottom: 20px;
+    color: var(--color-light-yellow);
+}
+
+.price-tag {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-white) !important;
+}
+
+.product-visual {
+    flex: 1;
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s;
+}
+
+/* Placeholder images (Replace URLs with your actual image paths) */
+.body-burger {
+    /* TODO: Remplacez cette URL par votre image HD du Body Burger */
+    background-image: url('placeholder_body_burger.jpg'); 
+}
+
+.smash-burger {
+    /* TODO: Remplacez cette URL par votre image HD du Smash Burger */
+    background-image: url('placeholder_smash_burger.jpg');
+}
+
+/* Hover effect for visual drama */
+.product-card:hover .product-visual {
+    transform: scale(1.05);
+}
+
+/* ===== Delivery Hub (C) ===== */
+.delivery-hub {
+    padding: 80px 0;
+    background-color: var(--color-black);
+    border-top: 5px solid var(--color-vivid-yellow);
+}
+
+.delivery-hub p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.delivery-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.delivery-btn {
+    flex: 0 0 250px;
+    background-color: var(--color-dark-gray);
+    color: var(--color-vivid-yellow);
+    border: 2px solid var(--color-vivid-yellow);
+    padding: 16px 20px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+}
+
+.delivery-btn:hover {
+    background-color: var(--color-vivid-yellow);
+    color: var(--color-black);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--color-vivid-yellow);
+}
+
+/* ===== Reviews Section (D) ===== */
+.reviews-section {
+    padding: 80px 0;
+    background-color: var(--color-dark-gray);
+}
+
+.review-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.review-card {
+    flex: 0 0 300px;
+    padding: 30px;
+    text-align: left;
+}
+
+.review-card.glass-morphism {
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.review-card .rating {
+    font-size: 1.5rem;
+    color: var(--color-vivid-yellow);
+    margin-bottom: 10px;
+}
+
+.review-card .source {
+    font-weight: 600;
+    color: var(--color-white);
+}
+
+.review-quote {
+    background-color: var(--color-vivid-yellow);
+    color: var(--color-black);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.review-quote .author {
+    margin-top: 15px;
+    font-style: italic;
+    font-weight: 600;
+}
+
+/* ===== Contact Section (E) ===== */
+.contact-section {
+    padding: 80px 0;
+    background-color: var(--color-black);
+}
+
+.contact-details {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.contact-card {
+    flex: 0 0 450px;
+    padding: 40px;
+    text-align: center;
+}
+
+.contact-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.contact-card p {
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+.phone-number {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-vivid-yellow);
+}
+
+/* ===== Footer ===== */
+.footer {
+    padding: 30px 0;
+    background-color: var(--color-dark-gray);
+    border-top: 1px solid rgba(255, 199, 44, 0.3);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-vivid-yellow);
+    border-radius: 5px;
+    transition: transform 0.2s;
+    /* Placeholder pour les vraies icônes SVG */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-black);
+    font-size: 1rem;
+    text-decoration: none;
+}
+.social-icon:hover {
+    transform: scale(1.1);
+}
+.social-icon.facebook::before { content: 'FB'; }
+.social-icon.instagram::before { content: 'IG'; }
+
+
+/* ===== Responsive (Mobile) ===== */
+@media (max-width: 900px) {
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2rem; }
+
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    
+    /* Mobile Menu */
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-dark-gray);
+        padding: 20px 0;
+        text-align: center;
+        border-top: 1px solid var(--color-vivid-yellow);
+    }
+    .nav-links.active a {
+        margin: 10px 0;
+    }
+
+    .cta-cluster { flex-direction: column; gap: 15px; }
+
+    .product-card, .product-card.reverse {
+        flex-direction: column;
+    }
+    .product-info { padding: 30px; }
+    .product-visual { min-height: 250px; width: 100%; }
+
+    .delivery-buttons { flex-direction: column; }
+    .delivery-btn { flex: 0 0 auto; width: 100%; }
+
+    .review-grid, .contact-details { flex-direction: column; gap: 20px; }
+    .review-card, .contact-card { flex: 0 0 100%; }
+    
+    .footer-content { flex-direction: column; gap: 15px; }
+}
