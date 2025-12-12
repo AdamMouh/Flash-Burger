@@ -119,9 +119,64 @@ h1 {
     font-weight: 600;
 }
 
-/* Hamburger (Style minimaliste) */
-.hamburger { /* ... code pour le hamburger... */ display: none; }
-/* (Le CSS pour le hamburger et le menu mobile est laissé au développeur pour implémenter dans le script.js) */
+/* 🍔 HAMBURGER MENU STYLES (Mobile) */
+.hamburger { 
+    display: none; 
+    /* Style pour le bouton lui-même */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 101;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-vivid-yellow);
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-menu {
+    display: flex;
+}
+
+/* Styles quand le menu est ACTIF (via script.js) */
+@media (max-width: 900px) {
+    .nav-menu { 
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-black);
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .nav-menu a {
+        margin: 15px 25px;
+        text-align: center;
+        font-size: 1.2rem;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--glass-border);
+    }
+    
+    .hamburger { 
+        display: block; 
+    }
+    
+    .hamburger.is-active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.is-active span:nth-child(2) { opacity: 0; }
+    .hamburger.is-active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+}
 
 
 /* ===== Buttons (CTA) ===== */
@@ -169,7 +224,8 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('VOTRE_IMAGE_DE_FOND_NOIR_ELEGANT.jpg') center/cover no-repeat fixed; 
+    /* CHEMIN D'IMAGE FINAL ICI */
+    background: url('./background.jpg') center/cover no-repeat fixed; 
     position: relative;
     padding: 100px 0;
 }
@@ -239,11 +295,15 @@ h1 {
     background-size: cover;
     background-position: center;
     transition: transform 0.5s;
-    /* Placeholder images (à remplacer) */
 }
 
-.body-burger-bg { background-image: url('placeholder_body_burger_hd.jpg'); } 
-.smash-burger-bg { background-image: url('placeholder_smash_burger_hd.jpg'); }
+/* CHEMINS D'IMAGES FINAUX ICI */
+.body-burger-bg { 
+    background-image: url('./body.jpg'); 
+} 
+.smash-burger-bg { 
+    background-image: url('./smash.jpg'); 
+}
 
 .product-item:hover .product-image {
     transform: scale(1.03);
@@ -406,10 +466,22 @@ h1 {
     background-color: var(--color-white);
 }
 
+/* AJOUT DU STYLE TIKTOK */
+.social-links a.tiktok {
+    background-color: #000000; 
+    color: var(--color-vivid-yellow);
+    border: 1px solid var(--color-vivid-yellow);
+}
+.social-links a.tiktok:hover {
+    background-color: var(--color-vivid-yellow);
+    color: var(--color-black);
+}
+
+
 /* ===== RESPONSIVE (Mobile) ===== */
 @media (max-width: 900px) {
+    /* Cache la version desktop de la navigation */
     .nav-menu { display: none; }
-    .hamburger { display: flex; /* Activation du hamburger ici */ }
     
     .hero-section { min-height: 70vh; }
     .hero-section h1 { font-size: 3.5rem; letter-spacing: 3px; }
