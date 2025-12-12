@@ -3,154 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Le site officiel de Flash Burger à Montréal. Découvrez nos Body et Smash Burgers 100% Halal. Qualité Max. Prix Mini. Commandez en ligne via Uber Eats, Skip ou DoorDash.">
-    <title>Flash Burger Officiel - Le Meilleur Burger Halal de Montréal</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Flash Burger Officiel | Le Smash Burger Halal de Montréal</title>
+    <meta name="description" content="Découvrez Flash Burger, le meilleur smash burger 100% Halal de Montréal. Qualité Max, Prix Mini. Commandez en ligne pour une livraison rapide.">
+    
+    <link rel="stylesheet" href="./src/style.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="./src/style.css">
-    
 </head>
+
 <body>
-    
-    <header class="main-header" id="header">
-        <div class="container header-content">
-            <a href="#hero" class="logo">FLASH BURGER</a>
-            
-            <nav class="nav-menu" id="navLinks">
-                <a href="#menu-products">Menu Phare</a>
-                <a href="#delivery-cta" class="cta-link">Commander</a>
-                <a href="#reviews">Avis Clients</a>
-                <a href="#contact-info">Contact</a>
-            </nav>
-            
-            <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu de navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+
+    <nav class="navbar" id="main-nav">
+        <div class="navbar-left">
+            <a href="#menu-products">MENU PHARE</a>
+            <a href="#about-us">À PROPOS</a>
+            <a href="#reviews">AVIS CLIENTS</a>
+            <a href="#contact-info">CONTACT</a>
         </div>
-    </header>
+    
+        <div class="navbar-center">
+            <a href="#hero">
+                <span class="logo-nav">FLASH BURGER</span>
+            </a>
+        </div>
+    
+        <div class="navbar-right">
+            <a href="https://www.ubereats.com/ca-fr/store/flash-burger/sdjYecWYXaOSZ_XokDh1fg" rel="nofollow" aria-label="Commander en ligne" target="_blank" id="red-btn">COMMANDER</a>
+        </div>
+    
+        <button class="hamburger" aria-label="Open menu">☰</button>
+    </nav>
+    
+    <section class="hero-homepage" id="hero">
+        <div class="hero-background">
+             </div>
+        <div class="hero-homepage-content">
+            <h1>QUALITÉ MAX,<br>PRIX MINI.</h1>
+            <a href="#delivery-cta" data-role="order-link" rel="nofollow" aria-label="Commander en ligne maintenant" id="on-btn-hero">COMMANDER EN UN ÉCLAIR</a>
+        </div>
+    </section>
 
-    <main>
+    <a href="#delivery-cta" data-role="order-link" rel="nofollow" aria-label="Commander en ligne maintenant" id="on-btn-hero-mobile">COMMANDER</a>
+
+    <section class="best-sellers-hp" id="menu-products">
+
+        <h2>CE QUE TOUT LE MONDE COMMANDE</h2>
+        <p>FLASH BURGER : LES MEILLEURS VENDEURS</p>
         
-        <section class="hero-section" id="hero">
-            <div class="container text-center">
-                <p class="pre-title fade-in">100% CERTIFIÉ HALAL 🍔</p>
-                <h1 class="fade-in delay-1">L'ÉLÉGANCE URBAINE DU BURGER</h1>
-                <p class="slogan fade-in delay-2">Qualité maximale. Prix mini. Goût éclair.</p>
-                
-                <div class="cta-cluster fade-in delay-3">
-                    <a href="#delivery-cta" class="btn-primary large-btn">COMMANDEZ EN UN ÉCLAIR</a>
-                    <a href="#menu-products" class="btn-secondary large-btn">DÉCOUVRIR NOS CRÉATIONS</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="product-showcase" id="menu-products">
-            <div class="container">
-                <h2 class="section-heading text-center">LE MENU EXCLUSIF FLASH</h2>
-                
-                <article class="product-item fade-in">
-                    <div class="product-image body-burger-bg"></div>
-                    <div class="product-details">
-                        <span class="product-tag">Le Monstre</span>
-                        <h3>BODY BURGER</h3>
-                        <p>Le burger qui tient ses promesses de A à Z. Généreux smash burger garni de notre sauce signature Biggy, d'un œuf au plat et de bacon Halal croustillant. Préparez-vous au choc.</p>
-                        <p class="price-info">**Taille & Qualité Inégalées.** À partir de **15,99 $** | Voir les prix sur Uber Eats</p>
-                        <a href="https://www.ubereats.com/ca-fr/store/flash-burger/sdjYecWYXaOSZ_XokDh1fg" target="_blank" class="btn-primary product-cta">COMMANDER LE BODY BURGER</a>
-                    </div>
-                </article>
-
-                <article class="product-item reverse-layout fade-in">
-                    <div class="product-image smash-burger-bg"></div>
-                    <div class="product-details">
-                        <span class="product-tag">Le Classique</span>
-                        <h3>SMASH BURGER</h3>
-                        <p>L'art de la simplicité poussé à son paroxysme. Galette de bœuf fraîchement smashée, fromage américain fondant, et juste la bonne touche de sauce pour un goût inimitable. Croustillant et juteux.</p>
-                        <p class="price-info">**Goût Authentique et Savoureux.** À partir de **12,99 $** | Voir les prix sur Uber Eats</p>
-                        <a href="https://www.ubereats.com/ca-fr/store/flash-burger/sdjYecWYXaOSZ_XokDh1fg" target="_blank" class="btn-primary product-cta">COMMANDER LE SMASH</a>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section class="delivery-section" id="delivery-cta">
-            <div class="container text-center">
-                <h2 class="section-heading white fade-in">LIVRAISON FACILE ET RAPIDE</h2>
-                <p class="delivery-slogan fade-in">Commandez votre Flash Burger en quelques clics via nos partenaires. Priorité Uber Eats !</p>
-                
-                <div class="delivery-buttons fade-in">
-                    <a href="https://www.ubereats.com/ca-fr/store/flash-burger/sdjYecWYXaOSZ_XokDh1fg" target="_blank" class="delivery-btn glass-morphism uber-eats">
-                        Commander sur Uber Eats
-                    </a>
-                    <a href="https://www.skipthedishes.com/flash-burger" target="_blank" class="delivery-btn glass-morphism skip-dishes">
-                        Commander sur SkipTheDishes
-                    </a>
-                    <a href="https://www.doordash.com/fr-CA/store/flash-burger-montr%C3%A9al-23014791/12727205" target="_blank" class="delivery-btn glass-morphism door-dash">
-                        Commander sur DoorDash
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="reviews-section" id="reviews">
-            <div class="container text-center">
-                <h2 class="section-heading fade-in">CE QUE DISENT NOS CLIENTS</h2>
-                
-                <div class="review-stats">
-                    <div class="stat-card glass-morphism fade-in">
-                        <p class="stat-rating">⭐️ 5.0/5</p>
-                        <p class="stat-source">Avis Facebook</p>
-                    </div>
-                    <div class="stat-card glass-morphism fade-in">
-                        <p class="stat-rating">⭐️ 4.5/5</p>
-                        <p class="stat-source">Avis Uber Eats (500+)</p>
+        <div class="products-hp">
+            <div class="product-hp is-visible">
+                <div class="product-image-hp">
+                    <div class="product-image-placeholder body-burger-image"></div>
+                    <div class="badge-hp">
+                        <img src="images/TMG-star-green.svg" alt="">
+                        <div class="badge-text">Le plus GÉANT<br>de Montréal</div>
                     </div>
                 </div>
-                
-                <blockquote class="testimonial-quote fade-in">
-                    "Meilleur burger en ville, la taille est folle pour le prix. Le Body Burger est une tuerie ! Livraison toujours impeccable."
-                    <cite>- Un Client Flash</cite>
-                </blockquote>
-            </div>
-        </section>
-
-        <section class="contact-section" id="contact-info">
-            <div class="container contact-grid">
-                
-                <div class="contact-card glass-morphism fade-in">
-                    <span class="card-icon">📞</span>
-                    <h3>NOUS CONTACTER</h3>
-                    <p class="contact-detail">(438) 380-3738</p>
-                    <p class="contact-schedule">Fermé · Ouvre à **17:00**</p>
-                    <a href="tel:+14383803738" class="btn-primary call-link">Appeler pour une commande</a>
+                <h3>BODY BURGER</h3>
+                <p>Triple smash, bacon Halal, œuf au plat et sauce Biggy. Le burger qui tient ses promesses de A à Z.</p>
                 </div>
 
-                <div class="contact-card glass-morphism fade-in">
-                    <span class="card-icon">📍</span>
-                    <h3>ADRESSE</h3>
-                    <p class="contact-detail">9221 Rue de Grosbois, Montréal QC H1K 4N6</p>
-                    <a href="https://www.bing.com/ck/a?!&&p=14dde375e49fdfa9bbf0b59e6476ae4974f20ed19ad53092c0db59106cc28101JmltdHM9MTc2NTQ5NzYwMA&ptn=3&ver=2&hsh=4&fclid=182ff748-3748-6361-1d31-e204367362eb&u=a1L21hcHM_Jm1lcGk9NTd-fkVtYmVkZGVkfkxhcmdlTWFwTGluayZ0eT0xOCZxPTkyMjElMjBSdWUlMjBkZSUyMEdyb3Nib2lzJTJDJTIwTW9udHIlQzMlQTlhbCUyQyUyMFFDJTIwSDFLJTIwNE42JnBwb29pcz00NS42MTAzMjhfLTczLjUzMTkxOTFfOTIyMSUyMFJ1ZSUyMGRlJTIwR3Jvc2JvaXMlMkMlMjBNb250ciVDMyVBOWFsJTJDJTIwUUMlMjBIMUslMjA0TjZffiZjcD00NS42MTAzMjh-LTczLjUzMTkxOSZ2PTImc1Y9MSZGT1JNPU1JUkUmcXB2dD05MjIxK1J1ZStkZStHcm9zYm9pcyUyYytNb250ciVjMyVhOWFsLg" target="_blank" class="btn-secondary map-link">Voir l'itinéraire</a>
+            <div class="product-hp is-visible">
+                <div class="product-image-hp">
+                    <div class="product-image-placeholder smash-burger-image"></div>
+                    <div class="badge-hp">
+                        <img src="images/TMG-star-yellow.svg" alt="">
+                        <div class="badge-text">Le Classique<br>Inégalé</div>
+                    </div>
                 </div>
-            </div>
-        </section>
+                <h3>SMASH BURGER</h3>
+                <p>Galette de bœuf fraîchement smashée, fromage américain fondant, et un goût inimitable. Croustillant et juteux.</p>
+                </div>
+
+            <div class="product-hp is-visible">
+                <div class="product-image-hp">
+                    <div class="product-image-placeholder chicken-burger-image"></div>
+                    <div class="badge-hp">
+                        <img src="images/TMG-star-red.svg" alt="">
+                        <div class="badge-text">Pour les fans de<br>Poulet Croustillant</div>
+                    </div>
+                </div>
+                <h3>POULET FLASH</h3>
+                <p>Filet de poulet croustillant et mariné, garni de notre sauce maison et de coleslaw frais.</p>
+                </div>
+        </div>
+
+        <a href="https://www.ubereats.com/ca-fr/store/flash-burger/sdjYecWYXaOSZ_XokDh1fg" data-role="order-link" class="start-order-btn-hp" target="_blank" aria-label="Commencer Votre Commande Maintenant">COMMANDER SUR UBER EATS</a>
+    </section>
+
+    <section class="limited-offers" id="delivery-cta">
+        <h2 id="section-title">LIVRAISON EN UN ÉCLAIR</h2>
+        <p id="section-subtitle">PARTENAIRES DE LIVRAISON</p>
         
-    </main>
-
-    <footer class="main-footer">
-        <div class="container footer-content">
-            <p class="copyright">© 2025 Flash Burger. Tous droits réservés.</p>
-            <div class="social-links">
-                <a href="https://www.facebook.com/profile.php?id=100076576602697" target="_blank" aria-label="Facebook" class="social-icon">FB</a>
-                <a href="https://www.instagram.com/flashburger.mtl/" target="_blank" aria-label="Instagram" class="social-icon">IG</a>
-                <a href="https://www.tiktok.com/@flashburger.mtl" target="_blank" aria-label="TikTok" class="social-icon tiktok">TK</a>
+        <div class="offers-grid">
+            <div class="offer-card">
+                <div class="offer-badge-wrapper">
+                    <img class="offer-badge yellow" src="images/TMG-star-yellow.svg" alt="Priorité">
+                    <span class="badge-label">MEILLEUR PRIX &<br> PLUS RAPIDE</span>
+                </div>
+                <div class="offer-image">
+                    <div class="delivery-logo uber-eats-logo"></div>
+                </div>
+                <h3 class="offer-title">COMMANDER SUR UBER EATS</h3>
+                <p class="offer-description">
+                    Profitez des meilleures promotions et d'une livraison express.
+                </p>
+                <a href="https://www.ubereats.com/ca-fr/store/flash-burger/sdjYecWYXaOSZ_XokDh1fg" target="_blank" class="grab-yours-cta" aria-label="Commander sur Uber Eats">
+                    COMMANDE RAPIDE
+                </a>
             </div>
+
+            <div class="offer-card">
+                <div class="offer-badge-wrapper">
+                    <img class="offer-badge red" src="images/TMG-star-red.svg" alt="Partenaire">
+                    <span class="badge-label">OPTION<br>ALTERNATIVE</span>
+                </div>
+                <div class="offer-image">
+                    <div class="delivery-logo skip-dishes-logo"></div>
+                </div>
+                <h3 class="offer-title">COMMANDER SUR SKIP</h3>
+                <p class="offer-description">
+                    Disponible sur la plateforme SkipTheDishes.
+                </p>
+                <a href="https://www.skipthedishes.com/flash-burger" target="_blank" class="grab-yours-cta" aria-label="Commander sur SkipTheDishes">
+                    COMMANDE RAPIDE
+                </a>
+            </div>
+
+            <div class="offer-card">
+                <div class="offer-badge-wrapper">
+                    <img class="offer-badge green" src="images/TMG-star-green.svg" alt="Partenaire">
+                    <span class="badge-label">LA LIVRAISON<br>POUR TOUS</span>
+                </div>
+                <div class="offer-image">
+                    <div class="delivery-logo door-dash-logo"></div>
+                </div>
+                <h3 class="offer-title">COMMANDER SUR DOOR DASH</h3>
+                <p class="offer-description">
+                    Votre Flash Burger livré directement à votre porte.
+                </p>
+                <a href="https://www.doordash.com/fr-CA/store/flash-burger-montr%C3%A9al-23014791/12727205" target="_blank" class="grab-yours-cta" aria-label="Commander sur DoorDash">
+                    COMMANDE RAPIDE
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews-section" id="reviews">
+        <div class="reviews-header">
+            <div id="section-title">PAROLES D'EXPERT EN BURGER</div>
+            <p id="section-subtitle">ILS SONT VENUS. ILS ONT CRAQUÉ. VOICI POURQUOI.</p>
+        </div>
+    
+        <div class="reviews-carousel">
+            <div class="reviews-track">
+                <div class="review-item">
+                    <div class="review-star">
+                        <div class="star-icon">⭐️</div>
+                    </div>
+                    <p id="review-item-red">
+                        “Le Body Burger est une tuerie ! Incroyable taille et saveur. De loin le meilleur burger Halal que j'ai mangé à Montréal.”
+                    </p>
+                </div>
+                <div class="review-item">
+                    <div class="review-star">
+                        <div class="star-icon">⭐️</div>
+                    </div>
+                    <p id="review-item-green">
+                        “Rien à dire. Le Smash est parfait, croustillant et juteux. Une qualité constante à un prix imbattable.”
+                    </p>
+                </div>
+                <div class="review-item">
+                    <div class="review-star">
+                        <div class="star-icon">⭐️</div>
+                    </div>
+                    <p id="review-item-yellow">
+                        “Un service super rapide et des frites parfaitement assaisonnées. Je reviendrai sans hésiter !”
+                    </p>
+                </div>
+                
+                <div class="review-item">
+                    <div class="review-star">
+                        <div class="star-icon">⭐️</div>
+                    </div>
+                    <p id="review-item-red">
+                        “Le Body Burger est une tuerie ! Incroyable taille et saveur. De loin le meilleur burger Halal que j'ai mangé à Montréal.”
+                    </p>
+                </div>
+                <div class="review-item">
+                    <div class="review-star">
+                        <div class="star-icon">⭐️</div>
+                    </div>
+                    <p id="review-item-green">
+                        “Rien à dire. Le Smash est parfait, croustillant et juteux. Une qualité constante à un prix imbattable.”
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <footer class="contact-footer-hp">
+        <div class="contact-header">
+            <div id="section-title">NOUS SOMMES JUSTE UN BURGER LOIN</div>
+            <p id="section-subtitle">ADRESSE ET CONTACT</p>
+        </div>
+    
+        <div class="contact-grid">
+            
+            <div class="location-card">
+                <img src="images/Nav-address-icon-yellow.svg" alt="Address Icon" class="address-icon">
+                <h3>FLASH BURGER</h3>
+                <p>9221 Rue de Grosbois, Montréal QC H1K 4N6</p>
+                <a href="tel:+14383803738" class="order-link-loc" target="_blank" aria-label="Appeler pour commander">(438) 380-3738</a>
+            </div>
+
+            <div class="order-platform-links">
+                <p>COMMANDEZ SUR:</p>
+                <a href="https://www.ubereats.com/ca-fr/store/flash-burger/sdjYecWYXaOSZ_XokDh1fg" target="_blank">Uber Eats</a>
+                <a href="https://www.skipthedishes.com/flash-burger" target="_blank">SkipTheDishes</a>
+                <a href="https://www.doordash.com/fr-CA/store/flash-burger-montr%C3%A9al-23014791/12727205" target="_blank">DoorDash</a>
+            </div>
+
+            <div class="footer-social-links">
+                <p>NOS RÉSEAUX SOCIAUX:</p>
+                <a href="https://www.instagram.com/flashburger.mtl/" target="_blank" aria-label="Instagram">Instagram</a>
+                <a href="https://www.facebook.com/profile.php?id=100076576602697" target="_blank" aria-label="Facebook">Facebook</a>
+                <a href="https://www.tiktok.com/@flashburger.mtl" target="_blank" aria-label="TikTok">TikTok</a>
+            </div>
+        </div>
+    
+        <div class="copyright">
+            © 2025 – Flash Burger Tous Droits Réservés
         </div>
     </footer>
 
     <script src="./src/script.js"></script>
+
 </body>
 </html>
